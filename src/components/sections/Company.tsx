@@ -1,14 +1,14 @@
 export default function Company() {
   return (
-    <section id="company" className="scroll-mt-14 bg-[#1E2B61]">
+    <section id="company" className="scroll-mt-14 bg-white">
       <div className="mx-auto max-w-7xl px-6 py-20 sm:px-8 lg:py-24">
         <div className="grid gap-10 lg:grid-cols-[minmax(0,320px)_1fr] lg:gap-16">
           <div>
-            <span className="font-jura text-4xl font-semibold tracking-wide text-white sm:text-5xl">
+            <span className="text-xs font-semibold uppercase tracking-wide text-[#65A3FF]">
               Company
             </span>
           </div>
-          <div className="space-y-6 text-base leading-relaxed text-[#DFE2EF]/85">
+          <div className="space-y-6 text-base leading-relaxed text-zinc-600">
             <p>
               Qognilum is a privately held company founded by researchers
               from the Research Unit on Neuromorphic Computing and Photonics

@@ -3,6 +3,7 @@ import Focus from "@/components/sections/Focus";
 import Expertise from "@/components/sections/Expertise";
 import Products from "@/components/sections/Products";
 import Company from "@/components/sections/Company";
+import Contact from "@/components/sections/Contact";
 import Footer from "@/components/Footer";
 
 export default function Home() {
@@ -13,6 +14,7 @@ export default function Home() {
       <Expertise />
       <Products />
       <Company />
+      <Contact />
       <Footer />
     </main>
   );

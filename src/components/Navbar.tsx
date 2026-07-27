@@ -9,6 +9,7 @@ const NAV_ITEMS = [
   { label: "Expertise", href: "#expertise" },
   { label: "Products & Services", href: "#products" },
   { label: "Company", href: "#company" },
+  { label: "Contact", href: "#contact" },
 ];
 
 export default function Navbar() {
@@ -24,10 +25,10 @@ export default function Navbar() {
 
   return (
     <header
-      className={`fixed inset-x-0 top-0 z-50 w-full border-b transition-colors duration-300 ${
+      className={`fixed inset-x-0 top-0 z-50 w-full border-b border-zinc-200 bg-white transition-colors duration-300 ${
         scrolled
-          ? "border-zinc-200 bg-white"
-          : "border-transparent bg-transparent"
+          ? "md:border-zinc-200 md:bg-white"
+          : "md:border-transparent md:bg-transparent"
       }`}
     >
       <div className="mx-auto flex h-14 max-w-7xl items-center px-6 sm:px-8">

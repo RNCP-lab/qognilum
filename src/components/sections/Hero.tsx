@@ -38,7 +38,7 @@ export default function Hero() {
 
         <a
           href="#products"
-          className="mt-6 inline-flex items-center gap-2 rounded-full border-2 border-[#1E2B61] px-6 py-2.5 text-sm font-bold uppercase tracking-wide text-[#1E2B61] transition hover:bg-[#1E2B61] hover:text-white"
+          className="mt-6 inline-flex items-center gap-2 rounded-full border-2 border-[#1E2B61] bg-white/40 px-6 py-2.5 text-sm font-bold uppercase tracking-wide text-[#1E2B61] transition hover:bg-[#1E2B61] hover:text-white"
         >
           View Work
         </a>

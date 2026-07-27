@@ -1,6 +1,8 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import ProductIcon from "@/components/ProductIcon";
+import ProductGallery from "@/components/ProductGallery";
+import Accordion from "@/components/Accordion";
 import Footer from "@/components/Footer";
 import { PRODUCTS } from "@/lib/products";
 
@@ -19,6 +21,8 @@ export default async function ProductPage({
   if (!product) {
     notFound();
   }
+
+  const [description, ...restParagraphs] = product.paragraphs;
 
   return (
     <>
@@ -49,30 +53,54 @@ export default async function ProductPage({
             {product.title}
           </h1>
 
-          <div className="mt-8 space-y-6 text-base leading-relaxed text-zinc-600">
-            {product.paragraphs.map((paragraph, index) => (
-              <p key={index}>{paragraph}</p>
-            ))}
+          <div className="mt-10">
+            <ProductGallery slug={product.slug} />
           </div>
 
-          {product.applications && (
-            <ul className="mt-6 flex flex-wrap gap-2">
-              {product.applications.map((item) => (
-                <li
-                  key={item}
-                  className="rounded-full border border-[#1E2B61]/15 bg-[#F5F7FC] px-3 py-1.5 text-sm text-[#1E2B61]"
-                >
-                  {item}
-                </li>
-              ))}
-            </ul>
-          )}
-
-          {product.closingParagraph && (
-            <p className="mt-6 text-base leading-relaxed text-zinc-600">
-              {product.closingParagraph}
-            </p>
-          )}
+          <div className="mt-10">
+            <Accordion
+              items={[
+                {
+                  title: "Description",
+                  content: <p>{description}</p>,
+                },
+                {
+                  title: "Details",
+                  content: (
+                    <div className="space-y-4">
+                      {restParagraphs.map((paragraph, index) => (
+                        <p key={index}>{paragraph}</p>
+                      ))}
+                      {product.applications && (
+                        <ul className="flex flex-wrap gap-2 pt-1">
+                          {product.applications.map((item) => (
+                            <li
+                              key={item}
+                              className="rounded-full border border-[#1E2B61]/15 bg-[#F5F7FC] px-3 py-1.5 text-xs text-[#1E2B61]"
+                            >
+                              {item}
+                            </li>
+                          ))}
+                        </ul>
+                      )}
+                      {product.closingParagraph && <p>{product.closingParagraph}</p>}
+                    </div>
+                  ),
+                },
+                {
+                  title: "Datasheet",
+                  content: (
+                    <div className="flex flex-col items-start gap-3 sm:flex-row sm:items-center sm:justify-between">
+                      <p>Detailed specifications are coming soon.</p>
+                      <span className="inline-flex shrink-0 cursor-not-allowed items-center gap-2 rounded-full border border-[#1E2B61]/15 bg-[#F5F7FC] px-4 py-2 text-xs font-medium text-[#1E2B61]/50">
+                        Coming soon
+                      </span>
+                    </div>
+                  ),
+                },
+              ]}
+            />
+          </div>
         </div>
       </main>
       <Footer />
