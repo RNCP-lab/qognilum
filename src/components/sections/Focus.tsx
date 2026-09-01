@@ -1,6 +1,24 @@
+"use client";
+
+import { useScrollProgress } from "@/hooks/useScrollProgress";
+
 export default function Focus() {
+  const { ref: sectionRef, progress } = useScrollProgress<HTMLElement>(0.65, 0.2);
+
+  const slideStyle = {
+    opacity: progress,
+    transform: `translateX(${(1 - progress) * -48}px)`,
+    willChange: "transform, opacity",
+  };
+
+  const scaleStyle = {
+    opacity: progress,
+    transform: `scale(${0.88 + progress * 0.12})`,
+    willChange: "transform, opacity",
+  };
+
   return (
-    <section id="focus" className="relative overflow-hidden bg-white">
+    <section id="focus" ref={sectionRef} className="relative overflow-hidden bg-white">
       <div className="bg-grid pointer-events-none absolute inset-0" aria-hidden="true" />
 
       <div className="relative mx-auto max-w-7xl px-6 py-24 sm:px-8 sm:py-32 lg:max-w-3xl lg:py-40">
@@ -8,12 +26,18 @@ export default function Focus() {
           Our Focus
         </span>
 
-        <h1 className="mt-4 text-balance text-3xl font-semibold tracking-tight text-[#1E2B61] sm:text-4xl lg:text-5xl">
+        <h1
+          style={slideStyle}
+          className="mt-4 text-balance text-3xl font-semibold tracking-tight text-[#1E2B61] sm:text-4xl lg:text-5xl"
+        >
           Qognilum develops high-fidelity, cost-effective deep-tech solutions
           for fibre optic sensing and photonic hardware security.
         </h1>
 
-        <div className="mt-6 max-w-xl space-y-5 text-lg leading-relaxed text-zinc-600">
+        <div
+          style={scaleStyle}
+          className="mt-6 max-w-xl space-y-5 text-lg leading-relaxed text-zinc-600"
+        >
           <p>
             Our mission is to transform advanced photonic technologies
             exploiting classical light and quantum optics into practical
@@ -33,6 +57,7 @@ export default function Focus() {
 
         <a
           href="#products"
+          style={scaleStyle}
           className="group mt-10 inline-flex items-center gap-2 rounded-full bg-[#1E2B61] px-6 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-[#16204a]"
         >
           Products & Services

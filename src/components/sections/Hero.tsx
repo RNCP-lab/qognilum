@@ -1,6 +1,36 @@
+"use client";
+
 import Image from "next/image";
+import { useEffect, useState } from "react";
 
 export default function Hero() {
+  const [progress, setProgress] = useState(0);
+
+  useEffect(() => {
+    let ticking = false;
+
+    const update = () => {
+      const heroHeight = window.innerHeight || 1;
+      const p = Math.min(Math.max(window.scrollY / heroHeight, 0), 1);
+      setProgress(p);
+      ticking = false;
+    };
+
+    const onScroll = () => {
+      if (!ticking) {
+        ticking = true;
+        requestAnimationFrame(update);
+      }
+    };
+
+    update();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  const contentScale = 1 + progress * 0.5;
+  const contentOpacity = 1 - progress;
+
   return (
     <section
       id="home"
@@ -22,7 +52,14 @@ export default function Hero() {
         aria-hidden="true"
       />
 
-      <div className="relative z-10 flex -translate-y-10 flex-col items-center px-6 text-center sm:-translate-y-14">
+      <div
+        className="relative z-10 flex -translate-y-10 flex-col items-center px-6 text-center sm:-translate-y-14"
+        style={{
+          transform: `scale(${contentScale})`,
+          opacity: contentOpacity,
+          willChange: "transform, opacity",
+        }}
+      >
         <Image
           src="/logo_blue/letters.svg"
           alt="Qognilum"

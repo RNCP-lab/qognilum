@@ -20,6 +20,16 @@ export default function Contact() {
         <div className="mt-14">
           <ContactForm />
         </div>
+
+        <p className="mt-12 text-sm text-[#DFE2EF]/85">
+          Or contact us directly at{" "}
+          <a
+            href="mailto:info@qognilum.eu"
+            className="text-white underline underline-offset-2 transition hover:text-[#9DB8F2]"
+          >
+            info@qognilum.eu
+          </a>
+        </p>
       </div>
     </section>
   );

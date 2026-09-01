@@ -5,11 +5,11 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 
 const NAV_ITEMS = [
-  { label: "Home", href: "#home" },
-  { label: "Expertise", href: "#expertise" },
-  { label: "Products & Services", href: "#products" },
-  { label: "Company", href: "#company" },
-  { label: "Contact", href: "#contact" },
+  { label: "Home", href: "/#home" },
+  { label: "Expertise", href: "/#expertise" },
+  { label: "Products & Services", href: "/#products" },
+  { label: "Company", href: "/#company" },
+  { label: "Contact", href: "/#contact" },
 ];
 
 export default function Navbar() {
@@ -33,7 +33,7 @@ export default function Navbar() {
     >
       <div className="mx-auto flex h-14 max-w-7xl items-center px-6 sm:px-8">
         <Link
-          href="#home"
+          href="/#home"
           onClick={() => setOpen(false)}
           className="flex shrink-0 items-center"
         >

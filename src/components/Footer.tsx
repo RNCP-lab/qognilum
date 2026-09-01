@@ -11,6 +11,12 @@ export default function Footer() {
           height={278}
           className="h-8 w-auto"
         />
+        <a
+          href="mailto:info@qognilum.eu"
+          className="text-center text-xs text-zinc-400 transition hover:text-zinc-600"
+        >
+          info@qognilum.eu
+        </a>
         <p className="text-center text-xs text-zinc-400">
           &copy; {new Date().getFullYear()} Qognilum. All rights reserved.
         </p>
