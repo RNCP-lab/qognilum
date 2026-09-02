@@ -5,6 +5,7 @@ import ProductGallery from "@/components/ProductGallery";
 import Accordion from "@/components/Accordion";
 import Footer from "@/components/Footer";
 import { PRODUCTS } from "@/lib/products";
+import { getProductGalleryImages } from "@/lib/productImages";
 
 export async function generateStaticParams() {
   return PRODUCTS.map((product) => ({ slug: product.slug }));
@@ -23,6 +24,7 @@ export default async function ProductPage({
   }
 
   const [description, ...restParagraphs] = product.paragraphs;
+  const galleryImages = getProductGalleryImages(product.slug);
 
   return (
     <>
@@ -54,7 +56,7 @@ export default async function ProductPage({
           </h1>
 
           <div className="mt-10">
-            <ProductGallery slug={product.slug} />
+            <ProductGallery slug={product.slug} images={galleryImages} />
           </div>
 
           <div className="mt-10">
@@ -88,8 +90,24 @@ export default async function ProductPage({
                   ),
                 },
                 {
-                  title: "Datasheet",
-                  content: (
+                  title: "Specs",
+                  content: product.specs ? (
+                    <dl className="divide-y divide-[#1E2B61]/10">
+                      {product.specs.map((spec) => (
+                        <div
+                          key={spec.label}
+                          className="grid gap-1 py-4 first:pt-0 last:pb-0 sm:grid-cols-3 sm:gap-6"
+                        >
+                          <dt className="text-sm text-[#1E2B61] sm:col-span-1">
+                            {spec.label}
+                          </dt>
+                          <dd className="text-sm leading-relaxed text-zinc-600 sm:col-span-2">
+                            {spec.value}
+                          </dd>
+                        </div>
+                      ))}
+                    </dl>
+                  ) : (
                     <div className="flex flex-col items-start gap-3 sm:flex-row sm:items-center sm:justify-between">
                       <p>Detailed specifications are coming soon.</p>
                       <span className="inline-flex shrink-0 cursor-not-allowed items-center gap-2 rounded-full border border-[#1E2B61]/15 bg-[#F5F7FC] px-4 py-2 text-xs font-medium text-[#1E2B61]/50">

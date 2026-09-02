@@ -1,11 +1,16 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import ProductIcon from "@/components/ProductIcon";
 import { PRODUCTS } from "@/lib/products";
 import { useScrollProgress } from "@/hooks/useScrollProgress";
 
-export default function Products() {
+export default function Products({
+  cardImages = {},
+}: {
+  cardImages?: Record<string, string>;
+}) {
   const { ref: sectionRef, progress } = useScrollProgress<HTMLElement>(0.85, 0.4);
 
   return (
@@ -33,30 +38,49 @@ export default function Products() {
                 key={product.slug}
                 href={`/products/${product.slug}`}
                 style={revealStyle}
-                className="group flex flex-col rounded-2xl border border-[#1E2B61]/10 bg-white p-6 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md"
+                className="group flex h-[27rem] flex-col overflow-hidden rounded-2xl border border-[#1E2B61]/10 bg-white shadow-sm transition-shadow duration-300 hover:shadow-lg"
               >
-                <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-[#1E2B61] text-white">
-                  <ProductIcon slug={product.slug} className="h-5 w-5" />
+                <div className="relative w-full shrink-0 overflow-hidden bg-zinc-200 transition-[height] duration-300 ease-out h-72 group-hover:h-28">
+                  {cardImages[product.slug] ? (
+                    <Image
+                      src={cardImages[product.slug]}
+                      alt=""
+                      fill
+                      sizes="(min-width: 1024px) 400px, (min-width: 640px) 45vw, 90vw"
+                      quality={60}
+                      className="object-cover"
+                    />
+                  ) : (
+                    <div className="flex h-full w-full items-center justify-center">
+                      <ProductIcon slug={product.slug} className="h-10 w-10 text-zinc-400" />
+                    </div>
+                  )}
                 </div>
-                <h3 className="mt-5 text-lg font-semibold leading-snug text-[#1E2B61]">
-                  {product.title}
-                </h3>
-                <p className="mt-3 flex-1 text-sm leading-relaxed text-zinc-600">
-                  {product.paragraphs[0]}
-                </p>
-                <span className="mt-5 inline-flex items-center gap-1 text-sm font-semibold text-[#1E2B61]">
-                  Read more
-                  <svg
-                    className="h-4 w-4 transition-transform group-hover:translate-x-0.5"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="1.75"
-                    aria-hidden="true"
-                  >
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M5 12h14m0 0-6-6m6 6-6 6" />
-                  </svg>
-                </span>
+
+                <div className="flex flex-1 flex-col overflow-hidden px-6">
+                  <h3 className="shrink-0 pt-5 text-lg font-semibold leading-snug text-[#1E2B61]">
+                    {product.title}
+                  </h3>
+
+                  <div className="mt-3 flex flex-1 flex-col overflow-hidden pb-6 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                    <p className="text-sm leading-relaxed text-zinc-600 line-clamp-4">
+                      {product.paragraphs[0]}
+                    </p>
+                    <span className="mt-4 inline-flex w-fit shrink-0 items-center gap-1 text-sm font-semibold text-[#1E2B61]">
+                      Read more
+                      <svg
+                        className="h-4 w-4 transition-transform group-hover:translate-x-0.5"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="1.75"
+                        aria-hidden="true"
+                      >
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M5 12h14m0 0-6-6m6 6-6 6" />
+                      </svg>
+                    </span>
+                  </div>
+                </div>
               </Link>
             );
           })}

@@ -1,9 +1,15 @@
+export type Spec = {
+  label: string;
+  value: string;
+};
+
 export type Product = {
   slug: string;
   title: string;
   paragraphs: string[];
   applications?: string[];
   closingParagraph?: string;
+  specs?: Spec[];
 };
 
 export const PRODUCTS: Product[] = [
@@ -36,6 +42,72 @@ export const PRODUCTS: Product[] = [
     ],
     closingParagraph:
       "Compared with conventional DAS technologies, Qognilum's MFFI solutions provide unprecedented sensing range while maintaining excellent sensitivity and operational simplicity.",
+    specs: [
+      {
+        label: "Fiber reach",
+        value:
+          ">2,000 km target, scalable to transoceanic links depending on cable architecture and optical link budget.",
+      },
+      {
+        label: "Cable compatibility",
+        value: "Designed for repeatered submarine telecom cables equipped with High-Loss Loopbacks (HLLBs).",
+      },
+      {
+        label: "Non-invasive operation",
+        value: "Interrogation from the cable landing station, requiring no modification of the submerged cable plant.",
+      },
+      {
+        label: "Per-span sensing",
+        value:
+          "Independently interrogates individual repeater spans, effectively turning each ~50–100 km cable section into a sensing element.",
+      },
+      {
+        label: "Number of sensing spans",
+        value: ">20 spans, with architecture scalable to tens of HLLBs per cable.",
+      },
+      {
+        label: "Optical-band compatibility",
+        value: "C/L-band operation.",
+      },
+      {
+        label: "Long-haul amplified-link compatibility",
+        value: "Designed to operate through the cable's existing EDFA/repeater infrastructure and associated high optical losses.",
+      },
+      {
+        label: "Sensing bandwidth",
+        value: "From quasi-DC / multi-hour phenomena to tens of Hz.",
+      },
+      {
+        label: "Sensitivity",
+        value: "Nanostrain level.",
+      },
+      {
+        label: "Continuous monitoring",
+        value: "Intended for 24/7 unattended operation over months/years.",
+      },
+      {
+        label: "Simultaneous geophysical and anthropogenic sensing",
+        value:
+          "Single instrument capable of observing earthquakes, ocean microseisms/storm activity, tides and other long-period ocean signals along with marine vessel activity, offshore construction, seismic surveys, industrial operations and other human-generated acoustic/seismic disturbances.",
+      },
+      {
+        label: "Telecom coexistence",
+        value: "Architecture suitable for operation alongside normal submarine telecommunications traffic.",
+      },
+      {
+        label: "Remote operation",
+        value: "Ethernet/IP control, remote configuration, health monitoring, data streaming and firmware updates.",
+      },
+      {
+        label: "Scalable data volume",
+        value: "Orders-of-magnitude lower acquisition/data-rate requirements than conventional high-speed coherent/OFDR-style interrogation.",
+      },
+      {
+        label: "Form factor target",
+        value:
+          "Ultimately suitable for a rack-mount landing-station appliance, interfacing between the cable monitoring/HLLB optical port and the operator's network.",
+      },
+    ],
   },
   {
     slug: "photonic-pufs",
