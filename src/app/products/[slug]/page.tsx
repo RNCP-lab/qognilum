@@ -1,6 +1,5 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import ProductIcon from "@/components/ProductIcon";
 import ProductGallery from "@/components/ProductGallery";
 import Accordion from "@/components/Accordion";
 import Footer from "@/components/Footer";
@@ -46,10 +45,6 @@ export default async function ProductPage({
             </svg>
             Products & Services
           </Link>
-
-          <div className="mt-6 flex h-14 w-14 items-center justify-center rounded-2xl bg-[#1E2B61] text-white">
-            <ProductIcon slug={product.slug} className="h-6 w-6" />
-          </div>
 
           <h1 className="mt-6 text-3xl font-semibold tracking-tight text-[#1E2B61] sm:text-4xl">
             {product.title}
