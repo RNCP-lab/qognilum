@@ -48,6 +48,7 @@ export default function Products({
                       fill
                       sizes="(min-width: 1024px) 400px, (min-width: 640px) 45vw, 90vw"
                       quality={60}
+                      priority
                       className="object-cover"
                     />
                   ) : (

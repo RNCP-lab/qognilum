@@ -85,7 +85,7 @@ export default async function ProductPage({
                   ),
                 },
                 {
-                  title: "Specs",
+                  title: product.specs ? "Specs" : "Services",
                   content: product.specs ? (
                     <dl className="divide-y divide-[#1E2B61]/10">
                       {product.specs.map((spec) => (
@@ -104,7 +104,7 @@ export default async function ProductPage({
                     </dl>
                   ) : (
                     <div className="flex flex-col items-start gap-3 sm:flex-row sm:items-center sm:justify-between">
-                      <p>Detailed specifications are coming soon.</p>
+                      <p>Service details are coming soon.</p>
                       <span className="inline-flex shrink-0 cursor-not-allowed items-center gap-2 rounded-full border border-[#1E2B61]/15 bg-[#F5F7FC] px-4 py-2 text-xs font-medium text-[#1E2B61]/50">
                         Coming soon
                       </span>
