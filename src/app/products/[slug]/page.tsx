@@ -4,7 +4,7 @@ import ProductGallery from "@/components/ProductGallery";
 import Accordion from "@/components/Accordion";
 import Footer from "@/components/Footer";
 import { PRODUCTS } from "@/lib/products";
-import { getProductGalleryImages } from "@/lib/productImages";
+import { getProductCardImage } from "@/lib/productImages";
 
 export async function generateStaticParams() {
   return PRODUCTS.map((product) => ({ slug: product.slug }));
@@ -23,7 +23,9 @@ export default async function ProductPage({
   }
 
   const [description, ...restParagraphs] = product.paragraphs;
-  const galleryImages = getProductGalleryImages(product.slug);
+  const cardImage = getProductCardImage(product.slug);
+  const galleryImages = cardImage ? [cardImage] : [];
+  const specsTabLabel = product.specsTabLabel ?? (product.specs ? "Specs" : "Services");
 
   return (
     <>
@@ -85,7 +87,7 @@ export default async function ProductPage({
                   ),
                 },
                 {
-                  title: product.specs ? "Specs" : "Services",
+                  title: specsTabLabel,
                   content: product.specs ? (
                     <dl className="divide-y divide-[#1E2B61]/10">
                       {product.specs.map((spec) => (
@@ -104,7 +106,7 @@ export default async function ProductPage({
                     </dl>
                   ) : (
                     <div className="flex flex-col items-start gap-3 sm:flex-row sm:items-center sm:justify-between">
-                      <p>Service details are coming soon.</p>
+                      <p>{specsTabLabel} details are coming soon.</p>
                       <span className="inline-flex shrink-0 cursor-not-allowed items-center gap-2 rounded-full border border-[#1E2B61]/15 bg-[#F5F7FC] px-4 py-2 text-xs font-medium text-[#1E2B61]/50">
                         Coming soon
                       </span>

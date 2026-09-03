@@ -10,6 +10,8 @@ export type Product = {
   applications?: string[];
   closingParagraph?: string;
   specs?: Spec[];
+  /** Overrides the accordion tab label that otherwise defaults to "Specs" / "Services". */
+  specsTabLabel?: string;
 };
 
 export const PRODUCTS: Product[] = [
@@ -113,6 +115,7 @@ export const PRODUCTS: Product[] = [
     slug: "photonic-pufs",
     title:
       "Advanced Prototyping of Photonic Physical Unclonable Functions (PUFs): From Classical to Quantum Security",
+    specsTabLabel: "Architectures",
     paragraphs: [
       "Qognilum develops next-generation photonic Physical Unclonable Functions (PUFs) that exploit the intrinsic randomness of optical and CMOS compatible integrated photonic systems to create unique, clone-resilient hardware based fingerprints.",
       "Unlike conventional electronic security solutions, photonic PUFs leverage the complex behaviour of light propagation, scattering, interference, and nanoscale fabrication variations to generate highly distinctive physical fingerprints. Qognilum's integrated PUFs leverages physics driven security, offering robust cyber-resilient and secure key generation without power/resource hungry pseudo-random algorithms.",
