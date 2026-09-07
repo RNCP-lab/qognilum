@@ -3,6 +3,11 @@ export type Spec = {
   value: string;
 };
 
+export type DetailSection = {
+  title: string;
+  paragraphs: string[];
+};
+
 export type Product = {
   slug: string;
   title: string;
@@ -12,6 +17,9 @@ export type Product = {
   specs?: Spec[];
   /** Overrides the accordion tab label that otherwise defaults to "Specs" / "Services". */
   specsTabLabel?: string;
+  relatedWork?: string[];
+  /** When set, the Details tab renders these titled subsections instead of the rest of `paragraphs`. */
+  detailSections?: DetailSection[];
 };
 
 export const PRODUCTS: Product[] = [
@@ -22,6 +30,12 @@ export const PRODUCTS: Product[] = [
       "Qognilum develops advanced signal processing solutions for optical communications and fibre optic sensing, combining state-of-the-art classical and bio-inspired/neuromorphic algorithms with lightweight machine learning models for real-time event detection, classification, and anomaly identification.",
       "Our software suites enable the analysis, modelling, and emulation of a wide range of optical devices and subsystems, including lasers, waveguides, photonic integrated circuits, and complete sensing architectures. The machine learning models developed by Qognilum have been validated in demanding laboratory environments and real-world field deployments, demonstrating outstanding performance in applications such as event detection, event classification and signal quality assessment.",
       "A key focus of our development is the migration of these cutting-edge algorithms to embedded hardware platforms, enabling quasi real-time processing directly at the sensing edge with low power-consumption footprint, suitable for IoT deployments. This approach significantly reduces processing latency and supports the deployment of efficient early-warning systems for critical infrastructure monitoring.",
+    ],
+    relatedWork: [
+      'Deligiannidis, Stavros, et al. "Compensation of fiber nonlinearities in digital coherent systems leveraging long short-term memory neural networks." Journal of Lightwave Technology 38.21 (2020): 5991-5999.',
+      'Deligiannidis, Stavros, et al. "VCSEL-based PAM-4 transmission system emulator: a data-driven deep-learning perspective." Applied Optics 65.16 (2026): 5369-5375.',
+      'Moustakas, Georgios, et al. "Neuromorphic imaging flow cytometry combined with adaptive recurrent spiking neural networks." Optics Express 33.16 (2025): 34180-34194.',
+      'Moustakas, G., et al. "Data Driven Simulation of Semiconductor Optical Amplifiers by Means of bi-LSTM and Transformer Machine Learning Models." The European Conference on Lasers and Electro-Optics. Optica Publishing Group, 2025.',
     ],
   },
   {
@@ -110,19 +124,43 @@ export const PRODUCTS: Product[] = [
           "Ultimately suitable for a rack-mount landing-station appliance, interfacing between the cable monitoring/HLLB optical port and the operator's network.",
       },
     ],
+    relatedWork: [
+      'Bogris, Adonis, et al. "Sensitive seismic sensors based on microwave frequency fiber interferometry in commercially deployed cables." Scientific Reports 12.1 (2022): 14000.',
+      'Bogris, Adonis, et al. "Microwave frequency fiber interferometry in submarine deployed telecommunication cables." Optical Fiber Communication Conference. Optica Publishing Group, 2025.',
+      'Deligiannidis, Stavros, et al. "Earthquake Distance and Magnitude Estimation via Calibrated Microwave Frequency Fiber Interferometry." 2025 European Conference on Optical Communications (ECOC). IEEE, 2025.',
+      'Karydis, Georgios Aias, et al. "Per-Span Microwave Frequency Fiber Interferometry in Subsea Cables for Scalable Deep-Ocean Geophysical Monitoring." arXiv preprint arXiv:2606.21905 (2026), European Conference on Optical Communications (ECOC), 2026.',
+    ],
   },
   {
     slug: "photonic-pufs",
     title:
       "Advanced Prototyping of Photonic Physical Unclonable Functions (PUFs): From Classical to Quantum Security",
-    specsTabLabel: "Architectures",
     paragraphs: [
       "Qognilum develops next-generation photonic Physical Unclonable Functions (PUFs) that exploit the intrinsic randomness of optical and CMOS compatible integrated photonic systems to create unique, clone-resilient hardware based fingerprints.",
-      "Unlike conventional electronic security solutions, photonic PUFs leverage the complex behaviour of light propagation, scattering, interference, and nanoscale fabrication variations to generate highly distinctive physical fingerprints. Qognilum's integrated PUFs leverages physics driven security, offering robust cyber-resilient and secure key generation without power/resource hungry pseudo-random algorithms.",
-      "These characteristics enable robust hardware authentication, anti-counterfeiting, device identification, and secure cryptographic key generation for applications including photonic integrated circuits, optical transceivers, sensing platforms, and edge devices.",
-      "Building on our expertise in integrated photonics, optical signal processing, and machine learning, Qognilum is advancing the field towards quantum photonic PUFs, exploiting the fundamental properties of single-photon sources and quantum optical phenomena to deliver enhanced security, tamper free and machine-learning attack resilient at the physical layer.",
-      "Our quantum PUF technology introduces a new paradigm for hardware security by using single photons as information carriers, providing intrinsic advantages in terms of unpredictability, uniqueness, and resistance to invasive characterization. The quantum nature of the generated responses significantly increases robustness against side-channel attacks, as attempts to observe or extract the physical characteristics of the device can alter the quantum state itself, limiting the possibility of undetected information leakage.",
-      "Qognilum's research in quantum PUFs targets highly secure authentication architectures for future quantum-safe infrastructures, advanced QKD deployments, trusted photonic networks, secure communications, and next-generation Internet of Things (IoT) devices. By combining quantum photonics, advanced fabrication technologies, and intelligent signal analysis, we aim to deliver hardware security solutions capable of meeting the requirements of emerging cyber-physical systems.",
+    ],
+    detailSections: [
+      {
+        title: "Photonic Integrated PUFs",
+        paragraphs: [
+          "Photonic integrated PUFs leverage the complex behaviour of light propagation, scattering, interference, and nanoscale fabrication variations to generate unique and clone resilient physical fingerprints in a CMOS compatible integrated platform.",
+          "Qognilum's integrated PUFs circumvent complex and resource hungry algorithmic entropy sources by leveraging physics driven security, exploiting unavoidable silicon photonic fabrication tolerances, offer a robust, miniaturized pseudo-random number generator – ready for the post quantum era.",
+          "Extracting spectro-temporal responses applications such as robust hardware authentication, trusted hardware anti-counterfeiting and secure cryptographic key generation are within grasp. Applications include authentication of integrated circuits, of optical transceivers, sensing platforms, and IoT edge devices or secure PRNGs suitable for cryptographic systems.",
+        ],
+      },
+      {
+        title: "Quantum Hardened PUFs",
+        paragraphs: [
+          "Building on our expertise in integrated photonics, optical signal processing, and machine learning, Qognilum is advancing the field towards quantum photonic PUFs, exploiting SiN fabrication platform, the fundamental properties of single-photon sources and quantum optical phenomena to merge the above merits with enhanced security features, tamper free and machine-learning attack resiliency.",
+          "Our quantum PUF technology introduces a new paradigm for hardware security by using single photons as information carriers, providing intrinsic advantages in terms of unpredictability, uniqueness, and resistance to invasive characterization. The quantum nature of the generated responses significantly increases robustness against side-channel attacks, as attempts to observe or extract the physical characteristics of the device can alter the quantum state itself, limiting the possibility of undetected information leakage.",
+          "Qognilum's research in quantum PUFs targets highly secure authentication architectures for future quantum-safe infrastructures, advanced QKD deployments, trusted photonic networks, secure communications, and next-generation Internet of Things (IoT) devices. By combining quantum photonics, advanced fabrication technologies, and intelligent signal analysis, we aim to deliver hardware security solutions capable of meeting the requirements of emerging cyber-physical systems.",
+        ],
+      },
+    ],
+    relatedWork: [
+      'Sarantoglou, George, et al. "Reconfigurable silicon photonics extreme learning machine with random non-linearities as neural processor and physical unclonable function." Journal of Applied Physics 140.2 (2026): 023101.',
+      'Sarantoglou, G., et al. "Quantum-Secure Physical Unclonable Function enabled by Silicon Photonics Integrated Circuits." arXiv preprint arXiv:2605.14959 (2026).',
+      'Sarantoglou, George, et al. "Reconfigurable integrated photonic chips as dual-purpose neuromorphic accelerators and physical unclonable functions." Optics Letters 50.15 (2025): 4842-4845.',
+      'Dermanis, Dimitris, et al. "Photonic Physical Unclonable Function Based on Integrated Neuromorphic Devices." Journal of Lightwave Technology 40.22 (2022): 7333-7341.',
     ],
   },
 ];
