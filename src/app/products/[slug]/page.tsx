@@ -101,6 +101,20 @@ export default async function ProductPage({
                     </div>
                   ),
                 },
+                ...(product.proofOfConcept
+                  ? [
+                      {
+                        title: "Proof of Concept",
+                        content: (
+                          <div className="space-y-4">
+                            {product.proofOfConcept.map((paragraph, index) => (
+                              <p key={index}>{paragraph}</p>
+                            ))}
+                          </div>
+                        ),
+                      },
+                    ]
+                  : []),
                 ...(specsTabLabel
                   ? [
                       {

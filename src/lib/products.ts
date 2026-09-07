@@ -20,6 +20,7 @@ export type Product = {
   relatedWork?: string[];
   /** When set, the Details tab renders these titled subsections instead of the rest of `paragraphs`. */
   detailSections?: DetailSection[];
+  proofOfConcept?: string[];
 };
 
 export const PRODUCTS: Product[] = [
@@ -155,15 +156,12 @@ export const PRODUCTS: Product[] = [
           "Qognilum's research in quantum PUFs targets highly secure authentication architectures for future quantum-safe infrastructures, advanced QKD deployments, trusted photonic networks, secure communications, and next-generation Internet of Things (IoT) devices. By combining quantum photonics, advanced fabrication technologies, and intelligent signal analysis, we aim to deliver hardware security solutions capable of meeting the requirements of emerging cyber-physical systems.",
         ],
       },
-      {
-        title: "Qognilum's PUFs Proof-of-Concept",
-        paragraphs: [
-          "Qognilum's PUF security lies in the unavoidable imperfections during SOI or SiN state-of-the-art fabrication process. This inherent root of entropy is enhanced by carefully tailored in-house photonic design that exploits multi-resonant structures and fuzzy extractors co-optimized for photonic devices.",
-          "Current prototypes are implemented using photonic meshes, allowing the realization of large reset-ready PUF responses per chip, NIST-DIEHARD compatibility, whereas estimated equal error rate is below 10⁻¹², offering robust and clone-free operation.",
-          "Quantum hardened schemes, exploiting heralded photons boost equal error rate to 10⁻¹⁴ whereas hinder challenge-response acquisition attacks, rendering the integrated PUFs emulation secure.",
-          "Remote quantum readout schematics allow straightforward co-integration with commercial QKD systems, rendering Qognilum's PUF a critical add-on for scalable QKD node authentication.",
-        ],
-      },
+    ],
+    proofOfConcept: [
+      "Qognilum's PUF security lies in the unavoidable imperfections during SOI or SiN state-of-the-art fabrication process. This inherent root of entropy is enhanced by carefully tailored in-house photonic design that exploits multi-resonant structures and fuzzy extractors co-optimized for photonic devices.",
+      "Current prototypes are implemented using photonic meshes, allowing the realization of large reset-ready PUF responses per chip, NIST-DIEHARD compatibility, whereas estimated equal error rate is below 10⁻¹², offering robust and clone-free operation.",
+      "Quantum hardened schemes, exploiting heralded photons boost equal error rate to 10⁻¹⁴ whereas hinder challenge-response acquisition attacks, rendering the integrated PUFs emulation secure.",
+      "Remote quantum readout schematics allow straightforward co-integration with commercial QKD systems, rendering Qognilum's PUF a critical add-on for scalable QKD node authentication.",
     ],
     relatedWork: [
       'Sarantoglou, George, et al. "Reconfigurable silicon photonics extreme learning machine with random non-linearities as neural processor and physical unclonable function." Journal of Applied Physics 140.2 (2026): 023101.',
