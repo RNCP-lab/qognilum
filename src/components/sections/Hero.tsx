@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useEffect, useState } from "react";
 
 export default function Hero() {
@@ -47,13 +48,13 @@ export default function Hero() {
         className="pointer-events-none absolute inset-0"
         style={{
           background:
-            "radial-gradient(ellipse 160% 145% at 0% 0%, rgba(255,255,255,0.97) 0%, rgba(255,255,255,0.85) 32%, rgba(255,255,255,0.55) 55%, rgba(255,255,255,0.22) 75%, rgba(255,255,255,0) 100%)",
+            "radial-gradient(ellipse 220% 200% at 0% 0%, rgba(255,255,255,0.97) 0%, rgba(255,255,255,0.88) 36%, rgba(255,255,255,0.62) 60%, rgba(255,255,255,0.3) 80%, rgba(255,255,255,0) 100%)",
         }}
         aria-hidden="true"
       />
 
       <div
-        className="relative z-10 flex -translate-y-10 flex-col items-center px-6 text-center sm:-translate-y-14"
+        className="relative z-10 flex translate-y-0 flex-col items-center px-6 text-center sm:-translate-y-4"
         style={{
           transform: `scale(${contentScale})`,
           opacity: contentOpacity,
@@ -66,19 +67,27 @@ export default function Hero() {
           width={803}
           height={273}
           priority
-          className="h-28 w-auto sm:h-36 lg:h-44"
+          className="h-32 w-auto sm:h-44 lg:h-56"
         />
 
-        <p className="-mt-2 text-xl font-bold tracking-wide text-[#1E2B61] [text-shadow:0_2px_16px_rgba(255,255,255,0.9)] sm:text-2xl">
+        <p className="-mt-2 text-xl font-semibold tracking-wide text-[#1E2B61] [text-shadow:0_2px_16px_rgba(255,255,255,0.9)] sm:text-2xl">
           High-fidelity optical solutions
         </p>
 
-        <a
-          href="#products"
-          className="mt-6 inline-flex items-center gap-2 rounded-full border-2 border-[#1E2B61] bg-white/40 px-6 py-2.5 text-sm font-bold uppercase tracking-wide text-[#1E2B61] transition hover:bg-[#1E2B61] hover:text-white"
-        >
-          View Work
-        </a>
+        <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
+          <a
+            href="#products"
+            className="inline-flex items-center gap-2 rounded-[14px] border-2 border-[#1E2B61] bg-white/40 px-6 py-2.5 text-sm font-bold uppercase tracking-wide text-[#1E2B61] transition hover:bg-[#1E2B61] hover:text-white"
+          >
+            View Work
+          </a>
+          <Link
+            href="/news"
+            className="inline-flex items-center gap-2 rounded-[14px] border-2 border-[#1E2B61] bg-white/40 px-6 py-2.5 text-sm font-bold uppercase tracking-wide text-[#1E2B61] transition hover:bg-[#1E2B61] hover:text-white"
+          >
+            Latest News
+          </Link>
+        </div>
       </div>
 
       <a

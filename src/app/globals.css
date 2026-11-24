@@ -35,3 +35,26 @@ body {
   -webkit-mask-image: radial-gradient(ellipse 90% 85% at 50% 30%, black 0%, transparent 75%);
   mask-image: radial-gradient(ellipse 90% 85% at 50% 30%, black 0%, transparent 75%);
 }
+
+/* News masonry grid — see src/components/NewsGrid.tsx for the sizing maths. */
+.news-grid-item {
+  aspect-ratio: var(--ar);
+}
+
+@media (min-width: 48rem) {
+  .news-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-auto-rows: calc((100cqw - 4cqw) / 3 / 20);
+    grid-auto-flow: row dense;
+    column-gap: 2cqw;
+    row-gap: 0;
+  }
+
+  .news-grid-item {
+    aspect-ratio: auto;
+    grid-column: span var(--cs);
+    grid-row: span var(--rs);
+    padding-bottom: 2cqw;
+  }
+}
